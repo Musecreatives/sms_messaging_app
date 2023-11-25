@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "560817426212",
+    "firebase_url": "https://bulk-sms-paid-numbers-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "bulk-sms-paid-numbers",
+    "storage_bucket": "bulk-sms-paid-numbers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560817426212:android:c7e949cfd3dabe106fadb1",
+        "android_client_info": {
+          "package_name": "com.example.sms_messaging_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMC-VsCqmolFOROtF4qlP7IS0Eozm0TKU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
