@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:sms_messaging_app/core/app_export.dart';
+import 'package:sms_messaging_app/screens/dashboard_screen/dashboard_screen.dart';
 import 'package:sms_messaging_app/screens/drafts_messages_screen/drafts_messages_screen.dart';
 
 import '../screens/sent_message_screen/sent_message_screen.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,36 @@ class MyDrawer extends StatelessWidget {
                     style: AppTheme.lightTheme.textTheme.bodyMedium,
                   ),
                 ],
+              ),
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(30),
+            ),
+            Container(
+              width: double.infinity,
+              height: getProportionateScreenHeight(55),
+              decoration: BoxDecoration(
+                color: AppColor.primaryColor,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(getProportionateScreenWidth(5)),
+                ),
+              ),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.home,
+                  color: AppColor.whiteColor,
+                ),
+                title: Text(
+                  'Home',
+                  style: AppTheme.lightTheme.textTheme.bodyLarge!.copyWith(
+                    color: AppColor.whiteColor,
+                    fontSize: getProportionateScreenHeight(18),
+                  ),
+                ),
+                onTap: () {
+                  // Navigate to the home screen or perform any action
+                  Get.to(() => DashboardScreen());
+                },
               ),
             ),
             SizedBox(

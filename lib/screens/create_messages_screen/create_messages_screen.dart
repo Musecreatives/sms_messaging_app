@@ -1,7 +1,6 @@
 // create_message_screen.dart
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sms_messaging_app/core/app_export.dart';
+import 'package:sms_messaging_app/data/models/message/message.dart';
 import 'package:sms_messaging_app/screens/dashboard_screen/dashboard_screen.dart';
 import '../import_contacts_screen/import_contacts_screen.dart';
 import 'controller/create_messages_controller.dart';
@@ -14,10 +13,9 @@ class CreateMessageScreen extends StatelessWidget {
     SizeConfig.init(context);
     return Scaffold(
       appBar: AppBar(
-         
         leading: IconButton(
           color: AppColor.primaryColor,
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Get.offAll(DashboardScreen());
           },
@@ -38,7 +36,8 @@ class CreateMessageScreen extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(30.0),
-                child: MessageInputField(controller: controller.messageController),
+                child:
+                    MessageInputField(controller: controller.messageController),
               ),
             ),
           ],
@@ -109,30 +108,31 @@ class SelectRecipientsFab extends StatelessWidget {
         context: context,
         builder: (BuildContext context) {
           return Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ListTile(
-                  leading: Icon(Icons.send),
-                  title: Text('Send Now'),
-                  subtitle: Text('Message will be delivered immediately'),
+                  leading: const Icon(Icons.send),
+                  title: const Text('Send Now'),
+                  subtitle: const Text('Message will be delivered immediately'),
                   onTap: () {
                     Get.offAll(() => ImportContactsScreen());
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.save),
-                  title: Text('Save as Draft'),
-                  subtitle: Text('Message will be saved as draft'),
+                  leading: const Icon(Icons.save),
+                  title: const Text('Save as Draft'),
+                  subtitle: const Text('Message will be saved as draft'),
                   onTap: () {
                     _validateAndSaveDraft(context);
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.schedule),
-                  title: Text('Schedule Message'),
-                  subtitle: Text('Message will be delivered at a later time'),
+                  leading: const Icon(Icons.schedule),
+                  title: const Text('Schedule Message'),
+                  subtitle:
+                      const Text('Message will be delivered at a later time'),
                   onTap: () {
                     // Implement logic to schedule messages
                     Navigator.pop(context); // Close the bottom sheet
@@ -159,9 +159,9 @@ class SelectRecipientsFab extends StatelessWidget {
       ),
     );
   }
+
   void _validateAndSaveDraft(BuildContext context) {
-    String? validationMessage =
-        controller.messageController.text;
+    String? validationMessage = controller.messageController.text;
 
     if (validationMessage.isEmpty) {
       // Show a pop-up message if validation fails
@@ -174,7 +174,13 @@ class SelectRecipientsFab extends StatelessWidget {
       );
     } else {
       // Validation passed, save draft and navigate
-      controller.saveDraftAndNavigateToDrafts();
+      controller.saveDraftAndNavigateToDrafts(
+        userMessage: UserMessage(
+          message: controller.messageController.text,
+          time: DateTime.now(),
+          sender: 'Admin',
+        ),
+      );
     }
   }
 }

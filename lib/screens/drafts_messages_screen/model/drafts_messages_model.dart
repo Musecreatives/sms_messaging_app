@@ -1,5 +1,4 @@
 // draft page model
-import '../../../core/app_export.dart';
 
 class DraftsMessagesModel {
   String? name;
@@ -17,11 +16,11 @@ class DraftsMessagesModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['number'] = this.number;
-    data['message'] = this.message;
-    data['date'] = this.date;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['number'] = number;
+    data['message'] = message;
+    data['date'] = date;
     return data;
   }
 }

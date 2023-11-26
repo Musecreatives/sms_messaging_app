@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
-import 'package:sms_messaging_app/screens/create_password_screen/create_new_password.dart';
+import 'package:flutter/services.dart';
+import 'package:sms_messaging_app/widgets/drawer.dart';
 
 import '../../core/app_export.dart';
 
@@ -13,6 +14,12 @@ class SentMessagesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
+      appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.dark,
+        ),
+      ),
+      drawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -74,7 +81,8 @@ class SentMessagesScreen extends StatelessWidget {
                     child: ListTile(
                       title: Text(
                         'Yesterday',
-                        style: AppTheme.lightTheme.textTheme.bodyMedium!.copyWith(
+                        style:
+                            AppTheme.lightTheme.textTheme.bodyMedium!.copyWith(
                           color: AppColor.primaryColor,
                         ),
                       ),
@@ -84,7 +92,8 @@ class SentMessagesScreen extends StatelessWidget {
                       ),
                       trailing: Text(
                         '12:00',
-                        style: AppTheme.lightTheme.textTheme.bodySmall!.copyWith(
+                        style:
+                            AppTheme.lightTheme.textTheme.bodySmall!.copyWith(
                           color: AppColor.primaryColor,
                         ),
                       ),
@@ -106,7 +115,8 @@ class SentMessagesScreen extends StatelessWidget {
                     child: ListTile(
                       title: Text(
                         '22nd, October',
-                        style: AppTheme.lightTheme.textTheme.bodyMedium!.copyWith(
+                        style:
+                            AppTheme.lightTheme.textTheme.bodyMedium!.copyWith(
                           color: AppColor.primaryColor,
                         ),
                       ),

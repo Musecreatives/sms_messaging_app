@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 
-import '../../drafts_messages_screen/controller/drafts_messages_controller.dart';
-
 class ImportContactsController extends GetxController {
   RxList<Contact> contacts = <Contact>[].obs;
   RxBool showAllUsers = true.obs;
@@ -46,7 +44,6 @@ class ImportContactsController extends GetxController {
 
     super.onInit();
   }
-
 }
 
 class Contact {

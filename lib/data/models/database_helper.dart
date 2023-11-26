@@ -1,11 +1,13 @@
 // database_helper.dart
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:sms_messaging_app/data/models/message/message.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._();
 
   static Database? _database;
+  static const String tableName = 'drafts';
 
   DatabaseHelper._();
 
@@ -20,9 +22,9 @@ class DatabaseHelper {
     return await openDatabase(path, version: 1, onCreate: _createDatabase);
   }
 
-  Future<void> _createDatabase(Database db, int version) async {
+  Future<void> _createDatabase(db, version) async {
     await db.execute('''
-      CREATE TABLE drafts(
+      CREATE TABLE $tableName(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         message TEXT,
         sender TEXT,
@@ -31,24 +33,31 @@ class DatabaseHelper {
     ''');
   }
 
-  Future<int> insertDraft(Map<String, dynamic> draft) async {
+  Future<void> insertDraft(UserMessage? userMessage) async {
     final Database db = await database;
-    return await db.insert('drafts', draft);
+    //return
+    await db.insert(tableName, userMessage!.toJson());
   }
 
   Future<List<Map<String, dynamic>>> getDrafts() async {
     final Database db = await database;
-    return await db.query('drafts', orderBy: 'id DESC');
+    if (_database == null) {
+      throw Exception('Database has not been initialized');
+    }
+
+    return await db.query(tableName, orderBy: 'id DESC');
   }
 
 // update draft feature
-  Future<int> updateDraft(int draftId, String newMessage) async {
+  Future<void> updateDraft(UserMessage userMessage) async {
     final Database db = await database;
-    return await db.rawUpdate(
-      '''UPDATE drafts
+    // return
+    await db.rawUpdate(
+      '''UPDATE $tableName
         SET message = ?
-        WHERE id = ?''',
-       [newMessage, draftId],
+        WHERE id = ?;
+        ''',
+      [userMessage.message, userMessage.id],
     );
   }
 

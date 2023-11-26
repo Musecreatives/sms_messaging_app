@@ -1,5 +1,3 @@
-import '../../../core/app_export.dart';
-
 // Model class for contact
 class Contact {
   final String id;
