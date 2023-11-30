@@ -133,7 +133,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       AppButton(
                         onPressed: () {
-                          Get.to(() => DashboardScreen());
+                          controller.signIn();
                         },
                         buttonText: 'Log In',
                       ),

@@ -15,9 +15,17 @@ class SentMessagesScreen extends StatelessWidget {
     SizeConfig.init(context);
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          'Sent Messages',
+          style: AppTheme.lightTheme.textTheme.bodyLarge!.copyWith(
+            fontWeight: FontWeight.w600,
+            fontSize: getProportionateScreenHeight(18),
+          ),
+        ),
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
         ),
+        centerTitle: true,
       ),
       drawer: const MyDrawer(),
       body: SingleChildScrollView(
@@ -28,15 +36,7 @@ class SentMessagesScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: getProportionateScreenHeight(22),
-                ),
-                Text('Sent Messages',
-                    style: AppTheme.lightTheme.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w600,
-                      fontSize: getProportionateScreenHeight(20),
-                    )),
-                SizedBox(
-                  height: getProportionateScreenHeight(20),
+                  height: getProportionateScreenHeight(10),
                 ),
                 Container(
                   height: getProportionateScreenHeight(117),

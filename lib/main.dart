@@ -1,9 +1,12 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
-import 'package:sms_messaging_app/screens/dashboard_screen/dashboard_screen.dart';
+import 'package:sms_messaging_app/firebase_options.dart';
 import 'core/app_export.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     DevicePreview(
       enabled: false,
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: DashboardScreen(),
+      home: const SignInScreen(),
     );
   }
 }
