@@ -66,8 +66,8 @@ dependencies:
   cloud_firestore: ^4.13.1
   path: ^1.8.3
   sqflite: ^2.3.0
+  permission_handler: ^11.1.0
   contacts_service: ^0.6.3
-  permission_handler: ^11.0.1
 
 dev_dependencies:
   flutter_test:
