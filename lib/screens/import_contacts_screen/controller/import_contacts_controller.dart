@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
+import 'package:sms_messaging_app/screens/import_contacts_screen/models/import_contacts_model.dart';
 
 class ImportContactsController extends GetxController {
-  RxList<Contact> contacts = <Contact>[].obs;
+  RxList<ContactInfo> contacts = <ContactInfo>[].obs;
   RxBool showAllUsers = true.obs;
   RxBool showPaidUsers = true.obs;
   RxBool showUnpaidUsers = true.obs;
@@ -38,7 +39,8 @@ class ImportContactsController extends GetxController {
   void onInit() {
     // Initialize contacts or fetch them from a service
     contacts.addAll([
-      Contact(name: 'John Doe', phoneNumber: '+1234567890', isSelected: false),
+      ContactInfo(
+          name: 'John Doe', phoneNumber: '+1234567890', isSelected: false),
       // Add more contacts as needed
     ]);
 
@@ -46,13 +48,13 @@ class ImportContactsController extends GetxController {
   }
 }
 
-class Contact {
+class ContactInfo {
   final String name;
   final String phoneNumber;
   bool isSelected;
   final bool isPaid;
 
-  Contact({
+  ContactInfo({
     required this.name,
     required this.phoneNumber,
     this.isSelected = false,

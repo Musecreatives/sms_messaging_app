@@ -39,6 +39,7 @@ class CreateMessageController extends GetxController {
   @override
   void dispose() {
     messageController.dispose();
+    messageController.clear();
     super.dispose();
   }
 }

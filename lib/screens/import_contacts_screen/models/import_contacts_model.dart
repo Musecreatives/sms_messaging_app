@@ -1,11 +1,11 @@
 // Model class for contact
-class Contact {
+class ContactInfo {
   final String id;
   final String name;
   final String phoneNumber;
   bool isSelected;
 
-  Contact({
+  ContactInfo({
     required this.id,
     required this.name,
     required this.phoneNumber,

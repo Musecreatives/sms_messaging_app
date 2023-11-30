@@ -181,6 +181,7 @@ class SelectRecipientsFab extends StatelessWidget {
           sender: 'Admin',
         ),
       );
+      controller.messageController.clear();
     }
   }
 }
