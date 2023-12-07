@@ -117,9 +117,11 @@ class SelectRecipientsFab extends StatelessWidget {
                   title: const Text('Send Now'),
                   subtitle: const Text('Message will be delivered immediately'),
                   onTap: () {
-                    Get.offAll(() => ImportContactsScreen(
-                          message: controller.messageController.text,
-                        ));
+                    Get.offAll(
+                      () => ImportContactsScreen(
+                        message: controller.messageController.text,
+                      ),
+                    );
                   },
                 ),
                 ListTile(

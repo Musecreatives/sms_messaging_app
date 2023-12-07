@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sms_messaging_app/screens/create_messages_screen/controller/create_messages_controller.dart';
 import 'package:sms_messaging_app/screens/dashboard_screen/dashboard_screen.dart';
 
 import 'package:sms_messaging_app/screens/import_contacts_screen/widget/multi_select.dart';
@@ -31,9 +33,10 @@ class _ImportContactsScreenState extends State<ImportContactsScreen> {
     _askPermissions();
 
     twilioFlutter = TwilioFlutter(
-        accountSid: 'ACbcc15b64633b823eddfeeb51331b2ad8',
-        authToken: 'd305c43c215c222f50e29610ac215063',
-        twilioNumber: '+17657692100');
+      accountSid: dotenv.env['accountSid'].toString(),
+      authToken: dotenv.env['authToken'].toString(),
+      twilioNumber: dotenv.env['twilioNumber'].toString(),
+    );
   }
 
   void sendSms(String number, String message) async {
@@ -72,6 +75,7 @@ class _ImportContactsScreenState extends State<ImportContactsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(CreateMessageController());
     return Scaffold(
       appBar: AppBar(
         systemOverlayStyle: const SystemUiOverlayStyle(
@@ -154,6 +158,7 @@ class _ImportContactsScreenState extends State<ImportContactsScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           sendSms(selectedContactsText, '${widget.message}');
+          controller.messageController.clear();
           Get.offAll(() => DashboardScreen());
         },
         shape: RoundedRectangleBorder(

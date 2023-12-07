@@ -69,6 +69,7 @@ dependencies:
   permission_handler: ^11.1.0
   contacts_service: ^0.6.3
   twilio_flutter: ^0.0.9
+  flutter_dotenv: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +97,7 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - .env
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
