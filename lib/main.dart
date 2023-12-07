@@ -9,8 +9,7 @@ import 'core/app_export.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
-  print(dotenv.env['accountSid']);
-  print(dotenv.env['authToken']);
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     DevicePreview(
