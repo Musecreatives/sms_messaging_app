@@ -10,10 +10,10 @@ class PinVerify extends StatefulWidget {
   int length;
   TextEditingController controller;
   PinVerify({
-    Key? key,
+    super.key,
     required this.length,
     required this.controller,
-  }) : super(key: key);
+  });
 
   @override
   State<PinVerify> createState() => _PinVerifyState();

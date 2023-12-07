@@ -26,6 +26,7 @@ class DraftsMessagesScreen extends StatelessWidget {
         //     Get.back();
         //   },
         // ),
+
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
         ),
@@ -44,64 +45,60 @@ class DraftsMessagesScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Obx(
-            () => Column(
-              children: [
-                SizedBox(height: getProportionateScreenHeight(20)),
-                ListView.separated(
-                  shrinkWrap: true,
-                  itemCount: controller.draftMessageList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    UserMessage draft = controller.draftMessageList[index];
-                    return InkWell(
-                      onTap: () {},
-                      child: Container(
-                        height: getProportionateScreenHeight(117),
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: AppColor.plansContainerColor,
-                          borderRadius: BorderRadius.circular(10),
+            () => ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: controller.draftMessageList.length,
+              itemBuilder: (BuildContext context, int index) {
+                UserMessage draft = controller.draftMessageList[index];
+                return InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: getProportionateScreenHeight(117),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColor.plansContainerColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(16),
+                      vertical: getProportionateScreenHeight(8),
+                    ),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: AppColor.primaryColor,
+                          child: Text(
+                            draft.sender.toString()[0],
+                            style: AppTheme.lightTheme.textTheme.bodyLarge
+                                ?.copyWith(
+                              color: AppColor.whiteColor,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: getProportionateScreenWidth(16),
-                          vertical: getProportionateScreenHeight(8),
-                        ),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: AppColor.primaryColor,
-                              child: Text(
-                                draft.sender.toString()[0],
-                                style: AppTheme.lightTheme.textTheme.bodyLarge
-                                    ?.copyWith(
-                                  color: AppColor.whiteColor,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                        SizedBox(width: getProportionateScreenWidth(10)),
+                        Expanded(
+                          child: DraftsListTile(
+                            title: draft.sender ?? "",
+                            content: draft.message ?? "",
+                            time: DateTimeConvert.formatDateTime(
+                                draft.time ?? DateTime.now()),
+                            onTapEdit: () => Get.to(
+                              () => DraftEditScreen(
+                                editDraft: draft,
                               ),
                             ),
-                            SizedBox(width: getProportionateScreenWidth(10)),
-                            Expanded(
-                              child: DraftsListTile(
-                                title: draft.sender ?? "",
-                                content: draft.message ?? "",
-                                time: DateTimeConvert.formatDateTime(
-                                    draft.time ?? DateTime.now()),
-                                onTapEdit: () => Get.to(
-                                  () => DraftEditScreen(
-                                    editDraft: draft,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return SizedBox(height: getProportionateScreenHeight(10));
-                  },
-                ),
-              ],
+                      ],
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(height: getProportionateScreenHeight(10));
+              },
             ),
           ),
         ),

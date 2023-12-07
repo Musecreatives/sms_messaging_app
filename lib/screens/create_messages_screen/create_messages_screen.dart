@@ -98,12 +98,12 @@ class MessageInputField extends StatelessWidget {
 class SelectRecipientsFab extends StatelessWidget {
   final CreateMessageController controller = Get.find();
 
-  SelectRecipientsFab({Key? key}) : super(key: key);
+  SelectRecipientsFab({super.key});
 
   @override
   Widget build(BuildContext context) {
     // bottom dialog
-    void _showBottomSheet(BuildContext context) {
+    void showBottomSheet(BuildContext context) {
       showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
@@ -117,7 +117,9 @@ class SelectRecipientsFab extends StatelessWidget {
                   title: const Text('Send Now'),
                   subtitle: const Text('Message will be delivered immediately'),
                   onTap: () {
-                    Get.offAll(() => ImportContactsScreen());
+                    Get.offAll(() => ImportContactsScreen(
+                          message: controller.messageController.text,
+                        ));
                   },
                 ),
                 ListTile(
@@ -148,7 +150,7 @@ class SelectRecipientsFab extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () {
         // Show the bottom sheet when the user taps the send button
-        _showBottomSheet(context);
+        showBottomSheet(context);
       },
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(29),

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../core/app_export.dart';
 
 class DraftsListTile extends StatelessWidget {
@@ -9,7 +7,7 @@ class DraftsListTile extends StatelessWidget {
   final int maxContentLength; // Set a maximum character limit for content
   final VoidCallback onTapEdit;
 
-  DraftsListTile({
+  const DraftsListTile({
     super.key,
     required this.title,
     required this.content,
@@ -22,12 +20,12 @@ class DraftsListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     String truncatedContent = content.length <= maxContentLength
         ? content
-        : content.substring(0, maxContentLength) + '...';
+        : '${content.substring(0, maxContentLength)}...';
 
     return ListTile(
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -39,16 +37,16 @@ class DraftsListTile extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             time,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
             ),
           ),
         ],
       ),
-      trailing: Icon(
+      trailing: const Icon(
         Icons.edit,
         color: AppColor.primaryColor,
       ),

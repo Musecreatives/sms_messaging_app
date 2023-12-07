@@ -9,6 +9,6 @@ class AppColor {
   // static const Color whiteColor = Color(0xFFF9F9F9);
   static const Color whiteColor = Colors.white;
   static const Color actionTextColor = Color(0xffd33939);
-  static const Color plansContainerColor = Color(0xFFFEEEEEE);
+  static const Color plansContainerColor = Color(0xFFFEEEEE);
   // static const Color lightNeutral = Color(0xFFF9F9F9);
 }

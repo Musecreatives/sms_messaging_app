@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 
-
 import '../../core/app_export.dart';
 import '../create_password_screen/create_new_password.dart';
 
@@ -22,7 +21,7 @@ class AuthenticationScreen extends StatelessWidget {
             buttonText: 'Next',
             description: 'Click next and Proceed to Create a new password',
             title: 'Authentication Successful',
-            onNext: () => Get.to(() => CreatePasswordScreeen()),
+            onNext: () => Get.to(() => const CreatePasswordScreeen()),
             imagePath: 'assets/images/confirm_cicle.png',
           );
         },

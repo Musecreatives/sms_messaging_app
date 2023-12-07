@@ -14,7 +14,7 @@ class AppTextField extends StatelessWidget {
   final bool isPassword; // New parameter for password field
 
   const AppTextField({
-    Key? key,
+    super.key,
     this.suffixIcon,
     this.obscureText = false,
     required this.textTitle,
@@ -23,7 +23,7 @@ class AppTextField extends StatelessWidget {
     required this.hintText,
     this.keyboardType = TextInputType.text,
     this.isPassword = false, // Default to non-password field
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class AppTextField extends StatelessWidget {
           focusColor: AppColor.primaryColor,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4.0),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColor.blackColor,
             ),
           ),

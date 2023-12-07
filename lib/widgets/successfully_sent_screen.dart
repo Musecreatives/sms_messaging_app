@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:sms_messaging_app/core/app_export.dart';
 import 'package:sms_messaging_app/screens/sent_message_screen/sent_message_screen.dart';
 
 class MessageSentSuccessfully extends StatelessWidget {
-  const MessageSentSuccessfully({Key? key});
+  const MessageSentSuccessfully({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,7 @@ class MessageSentSuccessfully extends StatelessWidget {
     // Schedule a callback to navigate after the specified duration
     Future.delayed(duration, () {
       // Use Navigator to push to the sent messages screen or outbox
-      Get.offAll(SentMessagesScreen()); // Replace with your route
+      Get.offAll(const SentMessagesScreen()); // Replace with your route
     });
 
     return Scaffold(

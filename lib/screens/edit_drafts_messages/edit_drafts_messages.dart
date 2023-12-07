@@ -1,12 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // draft_edit_screen.dart
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sms_messaging_app/core/app_export.dart';
 import 'package:sms_messaging_app/data/models/message/message.dart';
 import 'package:sms_messaging_app/screens/drafts_messages_screen/drafts_messages_screen.dart';
 
-import '../create_messages_screen/create_messages_screen.dart';
 import 'controller/edit_drafts_messages_controller.dart';
 
 class DraftEditScreen extends StatelessWidget {
@@ -22,6 +20,7 @@ class DraftEditScreen extends StatelessWidget {
     final EditDraftController editController = Get.put(EditDraftController());
     TextEditingController messageController =
         TextEditingController(text: editDraft.message);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
