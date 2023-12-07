@@ -33,9 +33,9 @@ class _ImportContactsScreenState extends State<ImportContactsScreen> {
     _askPermissions();
 
     twilioFlutter = TwilioFlutter(
-      accountSid: dotenv.env['accountSid'].toString(),
-      authToken: dotenv.env['authToken'].toString(),
-      twilioNumber: dotenv.env['twilioNumber'].toString(),
+      accountSid: '${dotenv.env['accountSid']}',
+      authToken: '${dotenv.env['authToken']}',
+      twilioNumber: '${dotenv.env['twilioNumber']}',
     );
   }
 
